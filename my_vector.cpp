@@ -41,7 +41,7 @@ size_t my_vector::size() const {
     return n;
 }
 
-my_vector::word_t &my_vector::operator[](const size_t index) {
+my_vector::word_t &my_vector::operator[](size_t index) {
     assert(n > 0 && index < n);
     __reset();
     return o.data(isSmall)[index];
@@ -49,7 +49,7 @@ my_vector::word_t &my_vector::operator[](const size_t index) {
 my_vector::word_t &my_vector::back() {
     return operator[](n - 1);
 }
-const my_vector::word_t &my_vector::operator[](const size_t index) const {
+const my_vector::word_t &my_vector::operator[](size_t index) const {
     assert(n > 0 && index < n);
     return o.data(isSmall)[index];
 }

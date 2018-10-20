@@ -64,9 +64,9 @@ public:
     bool empty() const;
     size_t size() const;
 
-    word_t& operator[](const size_t);
+    word_t& operator[](size_t);
     word_t& back();
-    const word_t& operator[](const size_t) const;
+    const word_t& operator[](size_t) const;
     const word_t& back() const;
     void push_back(word_t);
     void pop_back();
