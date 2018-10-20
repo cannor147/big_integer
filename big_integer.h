@@ -8,8 +8,6 @@
 #include <bitset>
 #include "my_vector.h"
 
-
-//todo: for 16
 typedef int32_t word_t;
 typedef uint32_t uword_t;
 typedef uint64_t udword_t;
@@ -17,8 +15,8 @@ typedef uint64_t udword_t;
 const uword_t UWORD_MAX = UINT32_MAX;
 const size_t CELL_SIZE = 32;
 
-typedef std::vector<word_t> vec;
-//typedef my_vector vec;
+//typedef std::vector<word_t> vec;
+typedef my_vector vec;
 
 class big_integer {
 

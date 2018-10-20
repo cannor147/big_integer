@@ -68,7 +68,6 @@ void big_integer::optimize() {
     while ((number.size() > 1) && (number.back() == number[number.size() - 2])) {
         number.pop_back();
     }
-
 }
 
 big_integer::big_integer() {
