@@ -1,6 +1,8 @@
 #include <cassert>
 #include "my_vector.h"
 
+const size_t CELL_SIZE = 32;
+
 my_vector::my_vector() {
     n = 0;
     o = object_t();
@@ -9,7 +11,7 @@ my_vector::my_vector() {
 my_vector::my_vector(size_t s, word_t value = 0) {
     n = s;
     o = object_t();
-    if (n <= SMALL_SIZE) {
+    if (n <= CELL_SIZE) {
         o.small.fill(value);
         o.big = std::make_shared<std::vector<word_t>>(0);
         isSmall = true;
@@ -59,7 +61,7 @@ const my_vector::word_t &my_vector::back() const {
 void my_vector::push_back(my_vector::word_t value) {
     __reset();
     if (isSmall) {
-        if (n < SMALL_SIZE) {
+        if (n < CELL_SIZE) {
             o.small[n] = value;
         } else {
             small_to_big();
@@ -75,7 +77,7 @@ void my_vector::pop_back() {
     __reset();
     if (!isSmall) {
         o.big.get()->pop_back();
-        if (n + 1 == SMALL_SIZE) {
+        if (n + 1 == CELL_SIZE) {
             big_to_small();
         }
     }
@@ -89,13 +91,13 @@ void my_vector::fill(my_vector::word_t value) {
 void my_vector::resize(size_t s) {
     assert(s > 0);
     n = s;
-    if (n <= SMALL_SIZE && !isSmall) {
+    if (n <= CELL_SIZE && !isSmall) {
         big_to_small();
     }
-    if (n > SMALL_SIZE && isSmall) {
+    if (n > CELL_SIZE && isSmall) {
         small_to_big();
     }
-    if (n > SMALL_SIZE) {
+    if (n > CELL_SIZE) {
         __reset();
     }
 }
@@ -107,13 +109,13 @@ void my_vector::resize(size_t s, word_t value) {
 void my_vector::small_to_big() {
     isSmall = false;
     o.big = std::make_shared<std::vector<word_t>>(n);
-    for (size_t i = 0; i < SMALL_SIZE; i++) {
+    for (size_t i = 0; i < CELL_SIZE; i++) {
         o.big.get()->operator[](i) = o.small[i];
     }
 }
 void my_vector::big_to_small() {
     isSmall = true;
-    for (size_t i = 0; i < SMALL_SIZE; i++) {
+    for (size_t i = 0; i < CELL_SIZE; i++) {
         o.small[i] = o.big.get()->operator[](i);
     }
     o.big.reset();

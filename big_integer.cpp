@@ -1,6 +1,7 @@
 #include "big_integer.h"
 
 typedef int32_t word_t;
+typedef int64_t dword_t;
 typedef uint32_t uword_t;
 typedef uint64_t udword_t;
 
@@ -227,7 +228,9 @@ big_integer &big_integer::operator<<=(word_t arg) {
         } else {
             w = static_cast<uword_t>(number[i]) >> (CELL_SIZE - small);
         }
-        number[i] <<= small;
+        auto x = static_cast<udword_t>(static_cast<dword_t>(number[i]));
+        x <<= small;
+        number[i] = static_cast<word_t>(static_cast<dword_t>(x));
         if (small != 0) number[i] += carry;
         carry = w;
     }
@@ -464,7 +467,7 @@ big_integer big_integer::add_ms(big_integer const &arg, size_t x, word_t y) {
     bool carry = false;
     for (size_t i = x; i < number.size(); i++){
         word_t addend = (i < s) ? arg.number[i + y] : 0;
-        word_t sum = number[i] + addend + carry;
+        auto sum = static_cast<word_t>(static_cast<dword_t>(number[i]) + addend + carry);
         carry = static_cast<uword_t>(sum) < static_cast<uword_t>(addend);
         carry |= static_cast<uword_t>(sum) < static_cast<uword_t>(number[i]);
         carry &= addend != static_cast<word_t>(UWORD_MAX) || i != s - 1;
@@ -479,7 +482,7 @@ big_integer big_integer::subtract_ms(big_integer const &arg, size_t x, word_t y)
     bool carry = false;
     for (size_t i = x; i < number.size(); i++){
         word_t subtrahend = (i < s) ? arg.number[i + y] : 0;
-        word_t difference = number[i] - subtrahend - carry;
+        auto difference = static_cast<word_t>(static_cast<dword_t>(number[i]) - subtrahend - carry);
         carry = static_cast<uword_t>(number[i]) < static_cast<uword_t>(subtrahend);
         carry |= static_cast<uword_t>(number[i]) < static_cast<uword_t>(difference);
         carry &= subtrahend != static_cast<word_t>(UWORD_MAX) || i != s - 1;

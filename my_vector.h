@@ -5,19 +5,18 @@
 #include <stdint-gcc.h>
 #include <memory>
 
-const size_t SMALL_SIZE = 32;
-
 class my_vector final {
 
+    static const size_t CELL_SIZE = 32;
     typedef int32_t word_t;
 
 private:
     struct object_t final {
-        std::array<word_t, SMALL_SIZE> small;
+        std::array<word_t, CELL_SIZE> small;
         std::shared_ptr<std::vector<word_t>> big;
 
         object_t() {
-            small = std::array<word_t, SMALL_SIZE>();
+            small = std::array<word_t, CELL_SIZE>();
             big = std::make_shared<std::vector<word_t>>(0);
         }
 
