@@ -1,7 +1,5 @@
 #include <iostream>
-#include <vector>
 #include "big_integer.h"
-#include "my_vector.h"
 
 int main() {
     big_integer a("10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");

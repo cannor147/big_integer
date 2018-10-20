@@ -1,5 +1,12 @@
 #include "big_integer.h"
 
+typedef int32_t word_t;
+typedef uint32_t uword_t;
+typedef uint64_t udword_t;
+
+const uword_t UWORD_MAX = UINT32_MAX;
+const size_t CELL_SIZE = 32;
+
 std::pair<std::vector<char>, word_t> decimal_to_binary(std::string u) {
     std::string *word = &u;
     std::vector<char> result;
