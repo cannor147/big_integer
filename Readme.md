@@ -24,13 +24,16 @@
 5. Разряды числа должны представляться 32-битными либо 64-битными числами. При этом необходимо, чтобы все биты в их представлении использовались. Например, нельзя хранить разряды как 64-битные числа, но использовать только младшие 32-бита в них.
 6. Реализация должна использовать арифметические операции той битности, которая естественна для данного представления разрядов. Например, нельзя разбивать разряды на отдельные биты, и делать операции в системе счисления с основанием 2.
 
-## Полезная информация
+## Тестирование
 
-1. По [ссылке](https://github.com/sorokin/cpp-course/tree/master/bigint) можно найти:
-   * [big_integer_testing.cpp](https://github.com/sorokin/cpp-course/blob/master/bigint/big_integer_testing.cpp) — набор модульных тестов для проверки корректности вашей программы. Прохождение этого набора тестов является необходимым, но не достаточным условием сдачи данного задания. При необходимости, этот набор тестов будет расширяться и дополняться. Тесты реализованы с помощью библиотеки gtest (Google Test).
-   * [gtest/](https://github.com/sorokin/cpp-course/tree/master/bigint/gtest) — библиотека [gtest](https://code.google.com/p/googletest/).
-   * [big_integer.](https://github.com/sorokin/cpp-course/blob/master/bigint/big_integer.h){[h](https://github.com/sorokin/cpp-course/blob/master/bigint/big_integer.h), [cpp](https://github.com/sorokin/cpp-course/blob/master/bigint/big_integer.cpp)} — реализация класса длинного числа с использованием библиотеки [GNU Multi-Precision](https://gmplib.org/), которая проходит приведенные тесты.
-2. Перед тем как писать код, возможно, стоит ознакомиться с книгой [Richard Brent, Paul Zimmermann — Modern Computer Arithmetic](http://www.loria.fr/~zimmerma/mca/mca-0.5.pdf). Про деление есть замечательная статья [Multiple-Length Division Revisited: A Tour of the Minefield](http://surface.syr.edu/cgi/viewcontent.cgi?article=1162&context=eecs_techreports).
+По [ссылке](https://github.com/sorokin/cpp-course/tree/master/bigint) можно найти:
+* [big_integer_testing.cpp](https://github.com/sorokin/cpp-course/blob/master/bigint/big_integer_testing.cpp) — набор модульных тестов для проверки корректности вашей программы. Прохождение этого набора тестов является необходимым, но не достаточным условием сдачи данного задания. При необходимости, этот набор тестов будет расширяться и дополняться. Тесты реализованы с помощью библиотеки gtest (Google Test).
+* [gtest/](https://github.com/sorokin/cpp-course/tree/master/bigint/gtest) — библиотека [gtest](https://code.google.com/p/googletest/).
+* [big_integer.](https://github.com/sorokin/cpp-course/blob/master/bigint/big_integer.h){[h](https://github.com/sorokin/cpp-course/blob/master/bigint/big_integer.h), [cpp](https://github.com/sorokin/cpp-course/blob/master/bigint/big_integer.cpp)} — реализация класса длинного числа с использованием библиотеки [GNU Multi-Precision](https://gmplib.org/), которая проходит приведенные тесты.
+
+## Полезные ссылки
+
+Перед тем как писать код, возможно, стоит ознакомиться с книгой [Richard Brent, Paul Zimmermann — Modern Computer Arithmetic](http://www.loria.fr/~zimmerma/mca/mca-0.5.pdf). Про деление есть замечательная статья [Multiple-Length Division Revisited: A Tour of the Minefield](http://surface.syr.edu/cgi/viewcontent.cgi?article=1162&context=eecs_techreports).
 
 # Small Object & Copy-on-Write optimisation
 
